@@ -1,0 +1,15 @@
+SpringRooSecurity
+=================
+Author: Panupong Chantaklang (nancomsp@gmail.com)
+Date:   2011-08-17 (yyyy-mm-dd)
+
+
+Patch
+-----------------
+1. pom.xml.patch 
+   Description : patch for update hsql.jar to versin 2.2.4 and modify test surefire-report show result
+   Command : patch pom.xml -p1 -i patch/pom.xml.patch
+
+2. applicationContext-security.xml.patch
+   Description : pathc for modify security configuration 
+   Command : patch src/main/resource/META-INF/spring/applicationContext-security.xml -p1 -i patch/applicationContext-security.xml.patch
