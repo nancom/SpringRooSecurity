@@ -27,7 +27,7 @@ perform tests
 controller all --package ~.web
 perform tests
 
-database properties set --key database.username --value SA
-database properties set --key database.url --value jdbc:hsqldb:hsql://localhost/secdb
+//database properties set --key database.username --value SA
+//database properties set --key database.url --value jdbc:hsqldb:hsql://localhost/secdb
 
 security setup
