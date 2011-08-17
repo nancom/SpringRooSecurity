@@ -1,0 +1,31 @@
+--- src/main/resources/META-INF/spring/applicationContext-security.xml	2011-08-17 15:08:05.695282000 +0700
++++ ../SecAdvDemo/src/main/resources/META-INF/spring/applicationContext-security.xml	2011-08-17 15:24:43.455282001 +0700
+@@ -12,16 +12,25 @@
+         <logout logout-url="/resources/j_spring_security_logout"/>
+         
+         <!-- Configure these elements to secure URIs in your application -->
+-        <intercept-url pattern="/choices/**" access="hasRole('ROLE_ADMIN')"/>
+-        <intercept-url pattern="/member/**" access="isAuthenticated()" />
++        <intercept-url pattern="/login" filters="none"/>
+         <intercept-url pattern="/resources/**" access="permitAll" />
+-        <intercept-url pattern="/**" access="permitAll" />
++        <intercept-url pattern="/**" access="isAuthenticated()"/>
+     </http>
+ 
+ 	<!-- Configure Authentication mechanism -->
+     <authentication-manager alias="authenticationManager">
+     	<!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
+     	<authentication-provider>
++			<jdbc-user-service data-source-ref="dataSource"
++								users-by-username-query="SELECT username, password, enabled FROM app_user WHERE username = ?"
++								authorities-by-username-query="SELECT au.username,ar.name 
++								                               FROM app_user au,app_role ar,app_user_roles aur 
++															   WHERE ar.id = aur.roles  
++															   AND au.id = aur.app_user
++															   AND au.username = ?"
++			/>
++		</authentication-provider>
++		<authentication-provider>
+ 	    	<password-encoder hash="sha-256"/>
+ 	        <user-service>
+ 	            <user name="admin" password="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918" authorities="ROLE_ADMIN"/>

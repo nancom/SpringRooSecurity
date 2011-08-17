@@ -1,0 +1,12 @@
+*** src/main/webapp/WEB-INF/layouts/default.jspx	2011-08-17 15:07:31.445282000 +0700
+--- ../SecAdvDemo/src/main/webapp/WEB-INF/layouts/default.jspx	2011-08-17 11:48:25.695282000 +0700
+***************
+*** 22,27 ****
+--- 22,28 ----
+  		    <div id="main">
+  	    		<tiles:insertAttribute name="body"/> 
+  		    	<tiles:insertAttribute name="footer" ignore="true"/>
++ 			Logged in as: ${pageContext.request.userPrincipal.name}	
+  		    </div>
+  		</div>
+  	</body>
