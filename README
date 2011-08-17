@@ -12,4 +12,4 @@ Patch
 
 2. applicationContext-security.xml.patch
    Description : pathc for modify security configuration 
-   Command : patch src/main/resource/META-INF/spring/applicationContext-security.xml -p1 -i patch/applicationContext-security.xml.patch
+   Command : patch src/main/resources/META-INF/spring/applicationContext-security.xml -p1 -i patch/applicationContext-security.xml.patch
