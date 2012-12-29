@@ -1,33 +1,30 @@
-// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-17 09:53:57
 project --topLevelPackage com.spt.sec --java 6 --projectName SecAdv
-persistence setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
+persistence setup --provider HIBERNATE --database H2_IN_MEMORY
 
-entity --class ~.domain.Sample --testAutomatically 
+entity jpa --class ~.domain.Sample --testAutomatically 
 field string name
 field string description
 
-entity --class ~.domain.Advance --testAutomatically
+entity jpa --class ~.domain.Advance --testAutomatically
 field string name
 field string description
 
-entity --class ~.domain.security.AppUser --testAutomatically 
+entity jpa --class ~.domain.security.AppUser --testAutomatically 
 field string username
 field string password
 field string description
 field boolean enabled
 
-entity --class ~.domain.security.AppRole --testAutomatically 
+entity jpa --class ~.domain.security.AppRole --testAutomatically 
 field string name
 field string description
 
 focus --class ~.domain.security.AppUser
-field set --fieldName roles --type com.spt.sec.domain.security.AppRole --cardinality MANY_TO_MANY --fetch EAGER
+field reference --fieldName userRole --type com.spt.sec.domain.security.AppRole --cardinality MANY_TO_ONE --fetch EAGER --joinColumnName USERROLE
 perform tests
 
-controller all --package ~.web
+web mvc setup
+web mvc  all --package ~.web
 perform tests
-
-//database properties set --key database.username --value SA
-//database properties set --key database.url --value jdbc:hsqldb:hsql://localhost/secdb
 
 security setup
