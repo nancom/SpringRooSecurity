@@ -2,6 +2,7 @@ SpringRooSecurity
 =================
 Author: Panupong Chantaklang (nancomsp@gmail.com)
 Date:   2011-08-17 (yyyy-mm-dd)
+modify Date : 2012-12-30
 
 Description
 -----------------
@@ -11,8 +12,7 @@ security to keep user , role in database instead of hard code to configuration f
 Prerequisit Software
 --------------------
 1. JDK 6
-2. Spring Roo 1.5.x
-3. hsqldb 2.2.x [Optional if need to persist data]
+2. Spring Roo 1.2.3
 
 Initial Project
 -----------------
@@ -22,20 +22,16 @@ Initial Project
 
 Patch
 -----------------
-1. pom.xml.patch 
-   Description : patch for update hsql.jar to versin 2.2.4 and modify test surefire-report show result
-   Command : patch pom.xml -p1 -i patch/pom.xml.patch
-
-2. applicationContext-security.xml.patch
-   Description : pathc for modify security configuration 
+1. applicationContext-security.xml.patch
+   Description : patch for modify security configuration 
    Command : patch src/main/resources/META-INF/spring/applicationContext-security.xml -p1 -i patch/applicationContext-security.xml.patch
 
-3. default.jspx.patch
-   Description : aptch for add line show user login name
+2. default.jspx.patch
+   Description : patch for add line show user login name
    Command : patch src/main/webapp/WEB-INF/layouts/default.jspx -p1 -i patch/default.jspx.patch
 
 Run 
 ------------------
 1. open terminal
-2. run command "mvn clean compile && mvn jetty:run"
+2. run command "mvn clean compile test jetty:run"
 3. open browser (firefox,chrome) and input "http://localhost:8080/SecAdv" enjoy !!
